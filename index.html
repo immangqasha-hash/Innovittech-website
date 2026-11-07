@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Innovittech helps ambitious businesses turn bold ideas into useful digital products, software, and experiences."
+    />
+    <meta name="theme-color" content="#f6f7f2" />
+    <link rel="icon" href="data:," />
+    <title>Innovittech — Build what’s next</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17241f;
+        --muted: #64716b;
+        --paper: #f6f7f2;
+        --white: #fff;
+        --green: #b7ef64;
+        --deep-green: #153c30;
+        --line: #dce2da;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: relative;
+        z-index: 2;
+        border-bottom: 1px solid rgb(23 36 31 / 8%);
+      }
+
+      .nav {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 19px;
+        font-weight: 750;
+        letter-spacing: -0.07em;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 31px;
+        height: 31px;
+        place-items: center;
+        border-radius: 9px;
+        background: var(--green);
+        color: var(--deep-green);
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: -0.1em;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        color: #48564f;
+        font-size: 13px;
+        font-weight: 550;
+      }
+
+      .nav-links a:not(.nav-cta):hover,
+      .nav-links a:not(.nav-cta):focus-visible {
+        color: var(--deep-green);
+      }
+
+      .nav-cta {
+        padding: 12px 18px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        color: var(--ink);
+        transition: background 160ms ease, color 160ms ease;
+      }
+
+      .nav-cta:hover,
+      .nav-cta:focus-visible {
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .menu-toggle {
+        display: none;
+        padding: 8px;
+        border: 0;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .hero {
+        display: grid;
+        min-height: 630px;
+        grid-template-columns: 1.04fr 0.96fr;
+        align-items: center;
+        gap: 50px;
+        padding-block: 74px 85px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 22px;
+        color: #52635a;
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #68a64a;
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 650px;
+        margin-bottom: 24px;
+        font-size: clamp(54px, 6.3vw, 82px);
+        font-weight: 570;
+        letter-spacing: -0.075em;
+        line-height: 0.99;
+      }
+
+      h1 em,
+      .section-heading em {
+        color: #4b7859;
+        font-family: var(--serif);
+        font-weight: 400;
+      }
+
+      .hero-copy {
+        max-width: 480px;
+        margin-bottom: 31px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .button-row {
+        display: flex;
+        align-items: center;
+        gap: 23px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 50px;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 0 21px;
+        border: 1px solid var(--deep-green);
+        border-radius: 999px;
+        background: var(--deep-green);
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 650;
+        transition: transform 160ms ease, background 160ms ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-2px);
+        background: #245844;
+      }
+
+      .text-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #43524a;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .arrow {
+        font-size: 17px;
+        line-height: 1;
+      }
+
+      .hero-art {
+        position: relative;
+        display: grid;
+        min-height: 435px;
+        overflow: hidden;
+        place-items: center;
+        border-radius: 15px;
+        background:
+          radial-gradient(ellipse at 48% 47%, rgb(183 239 100 / 20%) 0 11%, transparent 11.5%),
+          linear-gradient(140deg, #1d4738 0%, #102b24 100%);
+        isolation: isolate;
+      }
+
+      .hero-art::before,
+      .hero-art::after {
+        position: absolute;
+        z-index: -1;
+        width: 420px;
+        height: 420px;
+        border: 1px solid rgb(225 255 198 / 18%);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .hero-art::after {
+        width: 300px;
+        height: 300px;
+        border-color: rgb(225 255 198 / 25%);
+      }
+
+      .orbit {
+        position: absolute;
+        width: 490px;
+        height: 215px;
+        border: 1px solid rgb(225 255 198 / 20%);
+        border-radius: 50%;
+        transform: rotate(-32deg);
+      }
+
+      .orbit-two {
+        transform: rotate(53deg);
+      }
+
+      .core {
+        display: grid;
+        width: 122px;
+        height: 122px;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 28%);
+        border-radius: 34px;
+        background: var(--green);
+        box-shadow: 0 0 80px rgb(183 239 100 / 23%);
+        color: var(--deep-green);
+        font-size: 58px;
+        font-weight: 700;
+        letter-spacing: -0.12em;
+      }
+
+      .orbit-dot {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        border: 3px solid #163b30;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .dot-one {
+        top: 21%;
+        left: 31%;
+      }
+
+      .dot-two {
+        right: 19%;
+        bottom: 29%;
+        width: 10px;
+        height: 10px;
+      }
+
+      .art-note {
+        position: absolute;
+        right: 25px;
+        bottom: 23px;
+        color: rgb(255 255 255 / 65%);
+        font-size: 10px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .services {
+        padding-block: 105px 112px;
+        background: var(--white);
+      }
+
+      .section-top {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 36px;
+        margin-bottom: 48px;
+      }
+
+      .section-heading {
+        max-width: 600px;
+        margin-bottom: 0;
+        font-size: clamp(38px, 4.5vw, 56px);
+        font-weight: 560;
+        letter-spacing: -0.065em;
+        line-height: 1.05;
+      }
+
+      .section-intro {
+        max-width: 340px;
+        margin-bottom: 5px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
+      }
+
+      .service-card {
+        min-height: 245px;
+        padding: 30px 28px 20px 0;
+      }
+
+      .service-card + .service-card {
+        padding-left: 28px;
+        border-left: 1px solid var(--line);
+      }
+
+      .service-icon {
+        display: grid;
+        width: 43px;
+        height: 43px;
+        margin-bottom: 32px;
+        place-items: center;
+        border-radius: 13px;
+        background: #eff5e8;
+        color: #416d4e;
+        font-size: 20px;
+      }
+
+      .service-card h3 {
+        margin-bottom: 11px;
+        font-size: 19px;
+        font-weight: 650;
+        letter-spacing: -0.035em;
+      }
+
+      .service-card p {
+        max-width: 310px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        align-items: center;
+        gap: 90px;
+        padding-block: 111px;
+      }
+
+      .about-visual {
+        position: relative;
+        min-height: 385px;
+        overflow: hidden;
+        border-radius: 14px;
+        background: #e7eee1;
+      }
+
+      .about-visual::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 270px;
+        height: 270px;
+        border: 1px solid #b4c9ac;
+        border-radius: 50%;
+        content: "";
+        transform: translate(-50%, -50%);
+      }
+
+      .about-visual::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 180px;
+        height: 180px;
+        border: 1px solid #b4c9ac;
+        border-radius: 50%;
+        content: "";
+        transform: translate(-50%, -50%);
+      }
+
+      .visual-block {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: grid;
+        width: 103px;
+        height: 103px;
+        place-items: center;
+        border: 8px solid #e7eee1;
+        border-radius: 30px;
+        background: var(--deep-green);
+        box-shadow: 0 20px 48px rgb(24 60 46 / 20%);
+        color: var(--green);
+        font-size: 41px;
+        transform: translate(-50%, -50%) rotate(-8deg);
+      }
+
+      .visual-tag {
+        position: absolute;
+        padding: 10px 13px;
+        border: 1px solid rgb(23 36 31 / 8%);
+        border-radius: 9px;
+        background: rgb(255 255 255 / 82%);
+        color: #415249;
+        font-size: 11px;
+        font-weight: 650;
+        box-shadow: 0 8px 22px rgb(23 36 31 / 7%);
+      }
+
+      .tag-one {
+        top: 24%;
+        left: 15%;
+      }
+
+      .tag-two {
+        top: 30%;
+        right: 11%;
+      }
+
+      .tag-three {
+        right: 16%;
+        bottom: 18%;
+      }
+
+      .about-copy .section-heading {
+        margin-bottom: 21px;
+      }
+
+      .about-copy > p:not(.eyebrow) {
+        max-width: 470px;
+        margin-bottom: 28px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .principles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+
+      .principle {
+        color: #526159;
+        font-size: 12px;
+      }
+
+      .principle strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+        font-size: 13px;
+      }
+
+      .contact {
+        display: flex;
+        min-height: 294px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 35px;
+        padding: 58px 8%;
+        border-radius: 15px;
+        background: var(--deep-green);
+        color: var(--white);
+      }
+
+      .contact .eyebrow {
+        color: #d5e5d9;
+      }
+
+      .contact .eyebrow::before {
+        background: var(--green);
+      }
+
+      .contact h2 {
+        max-width: 600px;
+        margin-bottom: 0;
+        font-size: clamp(37px, 4.3vw, 54px);
+        font-weight: 550;
+        letter-spacing: -0.065em;
+        line-height: 1.05;
+      }
+
+      .contact h2 em {
+        color: var(--green);
+        font-family: var(--serif);
+        font-weight: 400;
+      }
+
+      .contact .button {
+        flex: 0 0 auto;
+        border-color: var(--green);
+        background: var(--green);
+        color: var(--deep-green);
+      }
+
+      .contact .button:hover,
+      .contact .button:focus-visible {
+        background: #cdf78f;
+      }
+
+      footer {
+        padding-block: 44px 25px;
+      }
+
+      .footer-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 27px;
+      }
+
+      .footer-main p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .footer-bottom {
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: #78827c;
+        font-size: 11px;
+      }
+
+      :focus-visible {
+        outline: 3px solid #7eac59;
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 800px) {
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 48px;
+          padding-block: 78px 80px;
+        }
+
+        .hero-art {
+          min-height: 385px;
+        }
+
+        .about {
+          grid-template-columns: 1fr 1fr;
+          gap: 45px;
+        }
+
+        .about-visual {
+          min-height: 340px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100% - 40px, 480px);
+        }
+
+        .nav {
+          min-height: 72px;
+        }
+
+        .menu-toggle {
+          display: inline-grid;
+          place-items: center;
+        }
+
+        .menu-toggle span,
+        .menu-toggle span::before,
+        .menu-toggle span::after {
+          display: block;
+          width: 20px;
+          height: 2px;
+          border-radius: 2px;
+          background: currentColor;
+        }
+
+        .menu-toggle span {
+          position: relative;
+        }
+
+        .menu-toggle span::before,
+        .menu-toggle span::after {
+          position: absolute;
+          left: 0;
+          content: "";
+        }
+
+        .menu-toggle span::before {
+          top: -6px;
+        }
+
+        .menu-toggle span::after {
+          top: 6px;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 71px;
+          right: 0;
+          left: 0;
+          display: none;
+          align-items: stretch;
+          gap: 0;
+          padding: 10px 20px 20px;
+          border-bottom: 1px solid var(--line);
+          background: var(--paper);
+        }
+
+        .nav-links.is-open {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-links a {
+          padding: 13px 0;
+        }
+
+        .nav-links .nav-cta {
+          align-self: flex-start;
+          margin-top: 8px;
+          padding: 11px 17px;
+        }
+
+        .hero {
+          gap: 37px;
+          padding-block: 66px 66px;
+        }
+
+        h1 {
+          font-size: clamp(52px, 13vw, 72px);
+        }
+
+        .hero-copy {
+          font-size: 15px;
+        }
+
+        .button-row {
+          flex-wrap: wrap;
+          gap: 18px;
+        }
+
+        .hero-art {
+          min-height: 320px;
+        }
+
+        .hero-art::before {
+          width: 330px;
+          height: 330px;
+        }
+
+        .orbit {
+          width: 380px;
+        }
+
+        .services {
+          padding-block: 75px;
+        }
+
+        .section-top {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 17px;
+          margin-bottom: 32px;
+        }
+
+        .service-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .service-card {
+          min-height: auto;
+          padding: 24px 0;
+        }
+
+        .service-card + .service-card {
+          padding-left: 0;
+          border-top: 1px solid var(--line);
+          border-left: 0;
+        }
+
+        .service-icon {
+          margin-bottom: 20px;
+        }
+
+        .about {
+          grid-template-columns: 1fr;
+          gap: 37px;
+          padding-block: 75px;
+        }
+
+        .about-visual {
+          min-height: 320px;
+        }
+
+        .contact {
+          min-height: auto;
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 38px 28px;
+        }
+
+        footer {
+          padding-top: 35px;
+        }
+
+        .footer-main {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Innovittech home">
+          <span class="brand-mark" aria-hidden="true">i</span>
+          <span>innovittech</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="primary-links"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+        <div class="nav-links" id="primary-links">
+          <a href="#services">What we do</a>
+          <a href="#about">About us</a>
+          <a href="#contact">Our approach</a>
+          <a class="nav-cta" href="mailto:hello@innovittech.com">Let’s talk <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero shell" id="home">
+        <div>
+          <p class="eyebrow">Technology, thoughtfully made</p>
+          <h1>Build what’s <em>next.</em></h1>
+          <p class="hero-copy">
+            We help ambitious businesses turn bold ideas into digital products
+            that make a difference — for their people, their customers, and
+            what comes next.
+          </p>
+          <div class="button-row">
+            <a class="button" href="#contact">Start a conversation <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#services">Explore our work <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Abstract green orbit illustration representing connected technology">
+          <span class="orbit" aria-hidden="true"></span>
+          <span class="orbit orbit-two" aria-hidden="true"></span>
+          <span class="orbit-dot dot-one" aria-hidden="true"></span>
+          <span class="orbit-dot dot-two" aria-hidden="true"></span>
+          <span class="core" aria-hidden="true">i.</span>
+          <span class="art-note" aria-hidden="true">Ideas into impact</span>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="shell">
+          <div class="section-top">
+            <div>
+              <p class="eyebrow">How we help</p>
+              <h2 class="section-heading">Technology with <em>purpose.</em></h2>
+            </div>
+            <p class="section-intro">
+              From the first sketch to the next big release, we bring the
+              thinking and craft to move your business forward.
+            </p>
+          </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">✳</span>
+              <h3>Digital strategy</h3>
+              <p>Find the right opportunity, shape a clear roadmap, and make confident decisions about what to build next.</p>
+            </article>
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">⌘</span>
+              <h3>Product &amp; design</h3>
+              <p>Create intuitive digital experiences grounded in real user needs and made to work beautifully.</p>
+            </article>
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">⟲</span>
+              <h3>Software development</h3>
+              <p>Build reliable, scalable software with the right technology and a focus on lasting value.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about shell" id="about">
+        <div class="about-visual" role="img" aria-label="Illustration of connected ideas around a central technology mark">
+          <span class="visual-tag tag-one">Strategy</span>
+          <span class="visual-tag tag-two">Design</span>
+          <span class="visual-tag tag-three">Technology</span>
+          <span class="visual-block" aria-hidden="true">✳</span>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">A better way forward</p>
+          <h2 class="section-heading">Good ideas deserve <em>great partners.</em></h2>
+          <p>
+            At Innovittech, we bring curious minds and practical expertise
+            together. We work closely with your team, make the complex feel
+            clear, and focus on solutions that keep creating value long after
+            launch.
+          </p>
+          <div class="principles">
+            <div class="principle"><strong>People first</strong>Built around the people who use it.</div>
+            <div class="principle"><strong>Made to matter</strong>Focused on outcomes, not buzzwords.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact shell" id="contact">
+        <div>
+          <p class="eyebrow">Have a challenge in mind?</p>
+          <h2>Let’s make your next idea <em>real.</em></h2>
+        </div>
+        <a class="button" href="mailto:hello@innovittech.com">Get in touch <span class="arrow" aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <div class="footer-main">
+        <a class="brand" href="#home" aria-label="Innovittech home">
+          <span class="brand-mark" aria-hidden="true">i</span>
+          <span>innovittech</span>
+        </a>
+        <p>Thoughtful technology. Meaningful progress.</p>
+      </div>
+      <div class="footer-bottom">© <span id="year">2026</span> Innovittech. All rights reserved.</div>
+    </footer>
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const primaryLinks = document.querySelector("#primary-links");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Open navigation menu" : "Close navigation menu",
+        );
+        primaryLinks.classList.toggle("is-open", !isOpen);
+      });
+
+      primaryLinks.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          primaryLinks.classList.remove("is-open");
+        }
+      });
+
+      document.querySelector("#year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
